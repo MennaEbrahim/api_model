@@ -13,7 +13,7 @@ import pickle
 import pandas as pd
 
 app=FastAPI()
-pickle_in=open("C:/Users/menna/app/model8.pkl","rb")
+pickle_in=open("api_model/model8.pkl","rb")
 model=pickle.load(pickle_in)
 
 @app.get('/')
