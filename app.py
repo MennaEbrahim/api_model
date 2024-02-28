@@ -13,7 +13,7 @@ import pickle
 import pandas as pd
 
 app=FastAPI()
-pickle_in=open("model8.pkl","rb")
+pickle_in=open("model9.pkl","rb")
 model=pickle.load(pickle_in)
 @app.get('/')
 def index():
