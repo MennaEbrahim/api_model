@@ -56,7 +56,7 @@ def predict_packages(data:Packages):
    #print(Average)
    # print(model.predict([[january,february,march,april,may,june,july,augest,septemper,october,november,kind,Average]]))
   #  print("Hello")
-   prediction=model.predict([[january,february,march,april,may,june,july,augest,septemper,october,november,december,kind]])
+   prediction=model.predict([[january,february,march,april,may,june,july,august,septemper,october,november,december,kind]])
     
    return {"prediction": int(prediction[0])}
 
