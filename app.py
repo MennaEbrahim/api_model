@@ -11,10 +11,19 @@ from Packages import Packages
 import numpy as np
 import pickle
 import pandas as pd
+from fastapi.middleware.cors import CORSMiddleware
+
+origins = [
+    "http://127.0.0.1:8000/",
+    "https://api-model-2.onrender.com/predict",
+    "https://api-model-2.onrender.com/"
+ ]
+
 
 app=FastAPI()
-pickle_in=open("model9.pkl","rb")
+pickle_in=open("C:/Users/menna/API/model9.pkl","rb")
 model=pickle.load(pickle_in)
+
 @app.get('/')
 def index():
     return {'message':'Hello,world'}
@@ -22,9 +31,11 @@ def index():
 @app.get('/{name}')
 def get_name(name: str):
     return {'welcome to my model': f'Hello,{name}'}
+
 @app.post('/predict')
 def predict_packages(data:Packages):
    data=data.dict()
+   
    january=data['january']
    
    february=data['february']
@@ -54,11 +65,18 @@ def predict_packages(data:Packages):
    #print(kind)
    
    #print(Average)
-   # print(model.predict([[january,february,march,april,may,june,july,augest,septemper,october,november,kind,Average]]))
+   # print(model.predict([[janruary,february,march,april,may,june,july,augest,septemper,october,november,kind,Average]]))
   #  print("Hello")
    prediction=model.predict([[january,february,march,april,may,june,july,august,septemper,october,november,december,kind]])
     
-   return {"prediction": int(prediction[0])}
+   return {"prediction": int(prediction)}
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["Authorization", "Content-Type"],
+)
 
 if __name__=='__main__':
     uvicorn.run(app,host='127.0.0.1',port=8000)
