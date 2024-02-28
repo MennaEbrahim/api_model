@@ -16,15 +16,7 @@ app=FastAPI()
 pickle_in=open("api_model/model8.pkl","rb")
 model=pickle.load(pickle_in)
 
-@app.get('/')
-def index():
-    return {'message':'Hello,world'}
-
-@app.get('/{name}')
-def get_name(name: str):
-    return {'welcome to my model': f'Hello,{name}'}
-
-@app.post('/predict')
+@app.post('/')
 def predict_packages(data:Packages):
    data=data.dict()
    january=data['january']
