@@ -21,7 +21,7 @@ origins = [
 
 
 app=FastAPI()
-pickle_in=open("C:/Users/menna/API/model9.pkl","rb")
+pickle_in=open("model9.pkl","rb")
 model=pickle.load(pickle_in)
 
 @app.get('/')
