@@ -27,7 +27,7 @@ def get_name(name: str):
 @app.post('/predict')
 def predict_packages(data:Packages):
    data=data.dict()
-   janruary=data['january']
+   january=data['january']
    
    february=data['february']
   
@@ -41,7 +41,7 @@ def predict_packages(data:Packages):
    
    july=data['july']
    
-   augest=data['august']
+   august=data['august']
 
    septemper=data['septemper']
 
@@ -56,9 +56,9 @@ def predict_packages(data:Packages):
    #print(kind)
    
    #print(Average)
-   # print(model.predict([[janruary,february,march,april,may,june,july,augest,septemper,october,november,kind,Average]]))
+   # print(model.predict([[january,february,march,april,may,june,july,augest,septemper,october,november,kind,Average]]))
   #  print("Hello")
-   prediction=model.predict([[janruary,february,march,april,may,june,july,augest,septemper,october,november,december,kind]])
+   prediction=model.predict([[january,february,march,april,may,june,july,augest,septemper,october,november,december,kind]])
     
    return {"prediction": int(prediction[0])}
 
